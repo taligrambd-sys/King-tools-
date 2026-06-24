@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bn" class="dark">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,15 +9,49 @@
     <script>
         // থিম পরিবর্তনের জন্য জাভাস্ক্রিপ্ট ফাংশন
         function toggleTheme() {
-            const html = document.documentElement;
+            const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
             
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                themeIcon.className = 'fa-solid fa-moon text-xl';
+            if (body.classList.contains('bg-gray-900')) {
+                // লাইট মোড অ্যাক্টিভ করা
+                body.classList.remove('bg-gray-900', 'text-gray-100');
+                body.classList.add('bg-gray-50', 'text-gray-900');
+                
+                // কার্ডগুলোর কালার পরিবর্তন
+                document.querySelectorAll('.tool-card').forEach(card => {
+                    card.classList.remove('bg-gray-800', 'border-gray-700');
+                    card.classList.add('bg-white', 'border-gray-200');
+                });
+                
+                // নববার ও ফুটার পরিবর্তন
+                document.getElementById('main-nav').classList.remove('bg-gray-800', 'border-gray-750');
+                document.getElementById('main-nav').classList.add('bg-white', 'border-gray-200');
+                document.getElementById('nav-title').classList.remove('text-white');
+                document.getElementById('nav-title').classList.add('text-gray-900');
+                document.getElementById('main-footer').classList.remove('bg-gray-950', 'border-gray-850');
+                document.getElementById('main-footer').classList.add('bg-gray-100', 'border-gray-200');
+                
+                themeIcon.className = 'fa-solid fa-moon text-xl text-gray-700';
                 localStorage.setItem('theme', 'light');
             } else {
-                html.classList.add('dark');
+                // ডার্ক মোড অ্যাক্টিভ করা
+                body.classList.remove('bg-gray-50', 'text-gray-900');
+                body.classList.add('bg-gray-900', 'text-gray-100');
+                
+                // কার্ডগুলোর কালার পরিবর্তন
+                document.querySelectorAll('.tool-card').forEach(card => {
+                    card.classList.remove('bg-white', 'border-gray-200');
+                    card.classList.add('bg-gray-800', 'border-gray-700');
+                });
+                
+                // নববার ও ফুটার পরিবর্তন
+                document.getElementById('main-nav').classList.remove('bg-white', 'border-gray-200');
+                document.getElementById('main-nav').classList.add('bg-gray-800', 'border-gray-750');
+                document.getElementById('nav-title').classList.remove('text-gray-900');
+                document.getElementById('nav-title').classList.add('text-white');
+                document.getElementById('main-footer').classList.remove('bg-gray-100', 'border-gray-200');
+                document.getElementById('main-footer').classList.add('bg-gray-950', 'border-gray-850');
+                
                 themeIcon.className = 'fa-solid fa-sun text-xl text-yellow-400';
                 localStorage.setItem('theme', 'dark');
             }
@@ -26,19 +60,13 @@
         // পেজ লোড হওয়ার সময় আগের থিম ধরে রাখার ব্যবস্থা
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme');
-            const html = document.documentElement;
-            const themeIcon = document.getElementById('theme-icon');
-            
             if (savedTheme === 'light') {
-                html.classList.remove('dark');
-                themeIcon.className = 'fa-solid fa-moon text-xl';
-            } else {
-                html.classList.add('dark');
-                themeIcon.className = 'fa-solid fa-sun text-xl text-yellow-400';
+                localStorage.setItem('theme', 'dark'); // রিসেট করার জন্য
+                toggleTheme(); // লাইট মোডে কনভার্ট করবে
             }
         });
 
-        // টুলস সার্চ করার ফাংশন
+        //ツールス সার্চ করার ফাংশন
         function filterTools() {
             const searchInput = document.getElementById('search-box').value.toLowerCase();
             const toolCards = document.querySelectorAll('.tool-card');
@@ -56,75 +84,75 @@
         }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-sans min-h-screen flex flex-col transition-colors duration-300">
+<body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col transition-colors duration-300">
 
-    <nav class="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-750 px-4 py-3 flex justify-between items-center shadow-md">
+    <nav id="main-nav" class="bg-gray-800 border-b border-gray-750 px-4 py-3 flex justify-between items-center shadow-md">
         <div class="flex items-center space-x-2">
             <i class="fa-solid fa-crown text-yellow-500 text-2xl"></i>
-            <span class="text-xl font-black tracking-wider text-gray-900 dark:text-white">KING-<span class="text-yellow-500">TOOLS</span></span>
+            <span id="nav-title" class="text-xl font-black tracking-wider text-white">KING-<span class="text-yellow-500">TOOLS</span></span>
         </div>
-        <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-750 transition focus:outline-none" title="থিম পরিবর্তন করুন">
+        <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-700/50 transition focus:outline-none" title="থিম পরিবর্তন করুন">
             <i id="theme-icon" class="fa-solid fa-sun text-xl text-yellow-400"></i>
         </button>
     </nav>
 
     <div class="max-w-7xl mx-auto w-full px-4 mt-4">
-        <div class="bg-gray-100 border border-dashed border-gray-400 dark:bg-gray-800 dark:border-gray-600 rounded-lg p-4 text-center text-gray-500 dark:text-gray-400 text-xs tracking-wider shadow-inner">
-            <p class="mb-1 text-[10px] uppercase text-gray-400 dark:text-gray-500 font-bold">বিজ্ঞাপন</p>
-            <div class="h-16 flex items-center justify-center bg-gray-200 dark:bg-gray-850 rounded">Top Banner Ad Slot (Responsive)</div>
+        <div class="bg-gray-800/50 border border-dashed border-gray-600 rounded-lg p-4 text-center text-gray-400 text-xs tracking-wider shadow-inner">
+            <p class="mb-1 text-[10px] uppercase text-gray-500 font-bold">বিজ্ঞাপন</p>
+            <div class="h-16 flex items-center justify-center bg-gray-850/50 rounded">Top Banner Ad Slot (Responsive)</div>
         </div>
     </div>
 
     <header class="max-w-7xl mx-auto w-full px-4 py-8 text-center">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-2">আপনার প্রয়োজনীয় সব টুলস এক জায়গায়</h1>
-        <p class="text-gray-500 dark:text-gray-400 text-sm md:text-base max-w-2xl mx-auto mb-6">সম্পূর্ণ ফ্রিতে ব্যবহার করুন প্রিমিয়াম সব ওয়েব টুলস এবং ডাউনলোডার।</p>
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-2">আপনার প্রয়োজনীয় সব টুলস এক জায়গায়</h1>
+        <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto mb-6">সম্পূর্ণ ফ্রিতে ব্যবহার করুন প্রিমিয়াম সব ওয়েব টুলস এবং ডাউনলোডার।</p>
         
         <div class="max-w-md mx-auto relative">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
             </div>
             <input type="text" id="search-box" onkeyup="filterTools()" placeholder="প্রয়োজনীয় টুলটি সার্চ করুন..." 
-                   class="w-full pl-10 pr-4 py-2.5 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm text-sm">
+                   class="w-full pl-10 pr-4 py-2.5 rounded-full border border-gray-700 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm text-sm">
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto w-full px-4 flex-grow grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         
-        <div class="tool-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-5 shadow-lg hover:border-yellow-500/50 transition flex flex-col justify-between group">
+        <div class="tool-card bg-gray-800 border border-gray-700 rounded-2xl p-5 shadow-lg hover:border-yellow-500/50 transition flex flex-col justify-between group">
             <div>
                 <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-red-500 text-2xl mb-4 group-hover:scale-110 transition">
                     <i class="fa-solid fa-video"></i>
                 </div>
-                <h3 class="tool-title text-lg font-bold text-gray-900 dark:text-white mb-1">ভিডিও ডাউনলোডার</h3>
-                <p class="tool-desc text-gray-500 dark:text-gray-400 text-xs leading-relaxed">ইউটিউব, ফেসবুক এবং টিকটক থেকে এক ক্লিকে হাই-কোয়ালিটি ভিডিও ডাউনলোড করুন।</p>
+                <h3 class="tool-title text-lg font-bold mb-1">ভিডিও ডাউনলোডার</h3>
+                <p class="tool-desc text-gray-400 text-xs leading-relaxed">ইউটিউব, ফেসবুক এবং টিকটক থেকে এক ক্লিকে হাই-কোয়ালিটি ভিডিও ডাউনলোড করুন।</p>
             </div>
-            <a href="downloader.html" class="mt-5 block text-center bg-gray-100 dark:bg-gray-750 hover:bg-yellow-500 hover:text-gray-950 dark:hover:bg-yellow-500 text-yellow-600 dark:text-yellow-500 font-semibold py-2 rounded-xl text-sm transition">
+            <a href="downloader.html" class="mt-5 block text-center bg-gray-750 hover:bg-yellow-500 hover:text-gray-950 text-yellow-500 font-semibold py-2 rounded-xl text-sm transition">
                 টুলটি ব্যবহার করুন <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
             </a>
         </div>
 
-        <div class="tool-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-5 shadow-lg opacity-60 flex flex-col justify-between">
+        <div class="tool-card bg-gray-800 border border-gray-700 rounded-2xl p-5 shadow-lg opacity-60 flex flex-col justify-between">
             <div>
                 <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500 text-2xl mb-4">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
                 </div>
-                <h3 class="tool-title text-lg font-bold text-gray-900 dark:text-white mb-1">ফটো এডিটর টুল</h3>
-                <p class="tool-desc text-gray-500 dark:text-gray-400 text-xs leading-relaxed">অনলাইনেই ইমেজ রিসাইজ, ক্রপ এবং ব্যাকগ্রাউন্ড রিমুভ করার চমৎকার ইউটিলিটি।</p>
+                <h3 class="tool-title text-lg font-bold mb-1">ফটো এডিটর টুল</h3>
+                <p class="tool-desc text-gray-400 text-xs leading-relaxed">অনলাইনেই ইমেজ রিসাইজ, ক্রপ এবং ব্যাকগ্রাউন্ড রিমুভ করার চমৎকার ইউটিলিটি।</p>
             </div>
-            <button disabled class="mt-5 block text-center bg-gray-50 dark:bg-gray-850 text-gray-400 dark:text-gray-500 font-semibold py-2 rounded-xl text-sm cursor-not-allowed">
+            <button disabled class="mt-5 block text-center bg-gray-850 text-gray-500 font-semibold py-2 rounded-xl text-sm cursor-not-allowed">
                 শীঘ্রই আসছে
             </button>
         </div>
 
-        <div class="tool-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-5 shadow-lg opacity-60 flex flex-col justify-between">
+        <div class="tool-card bg-gray-800 border border-gray-700 rounded-2xl p-5 shadow-lg opacity-60 flex flex-col justify-between">
             <div>
                 <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-500 text-2xl mb-4">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
-                <h3 class="tool-title text-lg font-bold text-gray-900 dark:text-white mb-1">পাসওয়ার্ড জেনারেটর</h3>
-                <p class="tool-desc text-gray-500 dark:text-gray-400 text-xs leading-relaxed">আপনাদের অ্যাকাউন্ট নিরাপদ রাখতে স্ট্রং এবং হ্যাক-প্রুফ পাসওয়ার্ড তৈরি করুন।</p>
+                <h3 class="tool-title text-lg font-bold mb-1">পাসওয়ার্ড জেনারেটর</h3>
+                <p class="tool-desc text-gray-400 text-xs leading-relaxed">আপনাদের অ্যাকাউন্ট নিরাপদ রাখতে স্ট্রং এবং হ্যাক-প্রুফ পাসওয়ার্ড তৈরি করুন।</p>
             </div>
-            <button disabled class="mt-5 block text-center bg-gray-50 dark:bg-gray-850 text-gray-400 dark:text-gray-500 font-semibold py-2 rounded-xl text-sm cursor-not-allowed">
+            <button disabled class="mt-5 block text-center bg-gray-850 text-gray-500 font-semibold py-2 rounded-xl text-sm cursor-not-allowed">
                 শীঘ্রই আসছে
             </button>
         </div>
@@ -132,13 +160,13 @@
     </main>
 
     <div class="max-w-7xl mx-auto w-full px-4 mb-6">
-        <div class="bg-gray-100 border border-dashed border-gray-400 dark:bg-gray-800 dark:border-gray-600 rounded-lg p-4 text-center text-gray-500 dark:text-gray-400 text-xs tracking-wider shadow-inner">
-            <p class="mb-1 text-[10px] uppercase text-gray-400 dark:text-gray-500 font-bold">বিজ্ঞাপন</p>
-            <div class="h-24 flex items-center justify-content-center bg-gray-200 dark:bg-gray-850 rounded">Bottom Large Banner Ad Slot</div>
+        <div class="bg-gray-800/50 border border-dashed border-gray-600 rounded-lg p-4 text-center text-gray-400 text-xs tracking-wider shadow-inner">
+            <p class="mb-1 text-[10px] uppercase text-gray-500 font-bold">বিজ্ঞাপন</p>
+            <div class="h-24 flex items-center justify-content-center bg-gray-850 rounded">Bottom Large Banner Ad Slot</div>
         </div>
     </div>
 
-    <footer class="bg-gray-100 dark:bg-gray-950 text-gray-400 dark:text-gray-500 text-xs text-center py-4 border-t border-gray-200 dark:border-gray-850 mt-auto">
+    <footer id="main-footer" class="bg-gray-950 text-gray-500 text-xs text-center py-4 border-t border-gray-850 mt-auto">
         <p>&copy; 2026 King-Tools. All Rights Reserved.</p>
     </footer>
 
