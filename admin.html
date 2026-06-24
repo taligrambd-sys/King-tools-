@@ -9,12 +9,11 @@
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col justify-center items-center p-4">
 
-    <!-- Login Card -->
     <div id="login-box" class="w-full max-w-md bg-gray-800 border border-gray-750 rounded-2xl p-6 shadow-2xl">
         <div class="text-center mb-6">
             <i class="fa-solid fa-user-shield text-yellow-500 text-4xl mb-2"></i>
             <h2 class="text-xl font-bold text-white">সুরক্ষিত এডমিন লগইন</h2>
-            <p class="text-xs text-gray-400 mt-1">কোড এবং ডাটাবেজ সুরক্ষায় অবফাসকেশন সক্রিয়</p>
+            <p class="text-xs text-gray-400 mt-1">সেশন স্টোরেজ এবং রিয়েলটাইম ফিক্স সক্রিয়</p>
         </div>
         <div class="space-y-4">
             <input type="password" id="admin-pin" placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-gray-700 bg-gray-850 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 text-center tracking-widest font-bold">
@@ -22,7 +21,6 @@
         </div>
     </div>
 
-    <!-- Admin Dashboard -->
     <div id="dashboard-box" class="w-full max-w-5xl bg-gray-800 border border-gray-750 rounded-2xl p-6 shadow-2xl hidden">
         <div class="flex justify-between items-center border-b border-gray-750 pb-4 mb-4">
             <h1 class="text-xl font-black text-white"><i class="fa-solid fa-crown text-yellow-500 mr-1"></i> KING-TOOLS OBFUSCATED PANEL</h1>
@@ -30,7 +28,6 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Left: Add Tool with Source Code -->
             <div class="lg:col-span-2 bg-gray-850 p-4 rounded-xl border border-gray-700 space-y-3">
                 <h3 class="text-sm font-bold text-white mb-1"><i class="fa-solid fa-folder-plus text-yellow-500 mr-1"></i> সোর্স কোডসহ টুল যুক্ত করুন</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -54,7 +51,6 @@
                 <button onclick="addNewTool()" class="w-full bg-yellow-500 text-gray-950 font-bold text-xs py-2.5 rounded-lg hover:bg-yellow-600 transition">সরাসরি সাইটে পাবলিশ করুন</button>
             </div>
 
-            <!-- Right: Manage Existing Tools -->
             <div class="space-y-4">
                 <div class="bg-gray-850 p-4 rounded-xl border border-gray-700">
                     <h3 class="text-sm font-bold text-white mb-2"><i class="fa-solid fa-bullhorn text-yellow-500 mr-1"></i> সাইট নোটিশ</h3>
@@ -70,9 +66,8 @@
         </div>
     </div>
 
-    <!-- Firebase Secure Obfuscated System -->
     <script type="module">
-        var _0x5f12=["\x4A\x6F\x79\x72\x61\x6D\x40\x23\x32\x30\x30\x36","\x76\x61\x6C\x75\x65","\x61\x64\x6D\x69\x6E\x2D\x70\x69\x6E","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x68\x69\x64\x64\x65\x6E","\x61\x64\x64","\x63\x6C\x61\x73\x73\x4C\x69\x73\x74","\x6C\x6F\x67\x69\x6E\x2D\x62\x6F\x78","\x72\x65\x6D\x6F\x76\x65","\x64\x61\x73\x68\x62\x6F\x61\x72\x64\x2D\x62\x6F\x78"];
+        var _0x5f12=["\x4A\x6F\x79\x72\x61\x6D\x40\x23\x32\x30\x30\x36","\x76\x61\x6C\x75\x65","\x61\x64\x6D\x69\x6E\x2D\x70\x69\x6E","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x68\x69\x64\x64\x65\x6E","\x61\x64\x64","\x63\x6C\x61\x73\x73\x4C\x69\x73\x74","\x6C\x6F\x67\x69\x6E\x2D\x62\x6F\x78","\x72\x65\x6D\x6F\x76\x65","\x64\x61\x73\x68\x62\x6F\x61\x72\x64\x2D\x62\x6F\x78","\x69\x73\x41\x75\x74\x68\x65\x6E\x74\x69\x63\x61\x74\x65\x64\x5F\x6B\x69\x6E\x67\x74\x6F\x6F\x6C\x73","\x73\x65\x73\x73\x69\x6F\x6E\x53\x74\x6F\x72\x61\x67\x65"];
         import { initializeApp as _0x1 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getDatabase as _0x2, ref as _0x3, set as _0x4, push as _0x5, onValue as _0x6, remove as _0x7 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
@@ -89,13 +84,21 @@
 
         const app = _0x1(fC);
         const db = _0x2(app);
-        
-        // নতুন পাসওয়ার্ডটি হেক্সাডেসিমেল ডিক্রিপশন মোডে এনকোড করা হয়েছে
         const pK = _0x5f12[0]; 
+
+        // পেজ লোড হওয়ার সময় আগের সেশন চেক করা
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem(_0x5f12[10]) === "true") {
+                document.getElementById(_0x5f12[7])[_0x5f12[6]][_0x5f12[5]](_0x5f12[4]);
+                document.getElementById(_0x5f12[9])[_0x5f12[6]][_0x5f12[8]](_0x5f12[4]);
+                loadData();
+            }
+        });
 
         window.checkLogin = function() {
             const input = document.getElementById(_0x5f12[2])[_0x5f12[1]];
             if (input === pK) {
+                sessionStorage.setItem(_0x5f12[10], "true"); // সেশন সেভ করা হলো
                 document.getElementById(_0x5f12[7])[_0x5f12[6]][_0x5f12[5]](_0x5f12[4]);
                 document.getElementById(_0x5f12[9])[_0x5f12[6]][_0x5f12[8]](_0x5f12[4]);
                 loadData();
@@ -105,6 +108,7 @@
         };
 
         window.logout = function() {
+            sessionStorage.removeItem(_0x5f12[10]); // সেশন ডিলিট করা হলো
             document.getElementById(_0x5f12[2])[_0x5f12[1]] = "";
             document.getElementById(_0x5f12[7])[_0x5f12[6]][_0x5f12[8]](_0x5f12[4]);
             document.getElementById(_0x5f12[9])[_0x5f12[6]][_0x5f12[5]](_0x5f12[4]);
@@ -151,8 +155,13 @@
                 });
         };
 
+        // ডিলিট ফাংশন গ্লোবাল স্কোপে ফিক্স করা হয়েছে
         window.deleteTool = function(key) {
-            if (confirm('টুলটি মুছে ফেলতে চান?')) { _0x7(_0x3(db, `tools/${key}`)); }
+            if (confirm('টুলটি মুছে ফেলতে চান?')) { 
+                _0x7(_0x3(db, `tools/${key}`))
+                .then(() => alert('টুলটি সফলভাবে ডিলিট করা হয়েছে!'))
+                .catch((err) => alert('ডিলিট করতে সমস্যা হয়েছে: ' + err.message));
+            }
         };
 
         window.updateNotice = function() {
