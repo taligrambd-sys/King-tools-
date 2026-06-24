@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>King-Tools - Advanced Admin Panel</title>
+    <title>King-Tools - Premium Cryptic Admin Panel</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,19 +11,19 @@
 
     <div id="login-box" class="w-full max-w-md bg-gray-800 border border-gray-750 rounded-2xl p-6 shadow-2xl">
         <div class="text-center mb-6">
-            <i class="fa-solid fa-code text-yellow-500 text-4xl mb-2"></i>
-            <h2 class="text-xl font-bold text-white">সুপিরিয়র কোড ম্যানেজার</h2>
-            <p class="text-xs text-gray-400 mt-1">পিন কোড দিয়ে ড্যাশবোর্ডে প্রবেশ করুন</p>
+            <i class="fa-solid fa-user-shield text-yellow-500 text-4xl mb-2"></i>
+            <h2 class="text-xl font-bold text-white">সুরক্ষিত এডমিন লগইন</h2>
+            <p class="text-xs text-gray-400 mt-1">কোড এবং ডাটাবেজ সুরক্ষায় অবফাসকেশন সক্রিয়</p>
         </div>
         <div class="space-y-4">
             <input type="password" id="admin-pin" placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-gray-700 bg-gray-850 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 text-center tracking-widest font-bold">
-            <button onclick="checkLogin()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-950 font-bold py-2.5 rounded-xl transition shadow-lg">লগইন</button>
+            <button onclick="checkLogin()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-950 font-bold py-2.5 rounded-xl transition shadow-lg">লগইন করুন</button>
         </div>
     </div>
 
     <div id="dashboard-box" class="w-full max-w-5xl bg-gray-800 border border-gray-750 rounded-2xl p-6 shadow-2xl hidden">
         <div class="flex justify-between items-center border-b border-gray-750 pb-4 mb-4">
-            <h1 class="text-xl font-black text-white"><i class="fa-solid fa-crown text-yellow-500 mr-1"></i> KING-TOOLS CODE PANEL</h1>
+            <h1 class="text-xl font-black text-white"><i class="fa-solid fa-crown text-yellow-500 mr-1"></i> KING-TOOLS OBFUSCATED PANEL</h1>
             <button onclick="logout()" class="bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white px-3 py-1.5 rounded-xl text-xs font-bold transition">লগআউট</button>
         </div>
 
@@ -33,7 +33,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div>
                         <label class="block text-[11px] text-gray-400 mb-1">টুলের নাম</label>
-                        <input type="text" id="tool-name" placeholder="যেমন: পাসওয়ার্ড জেনারেটর" class="w-full px-3 py-2 text-xs rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none">
+                        <input type="text" id="tool-name" placeholder="যেমন: ইউআরএল শর্টনার" class="w-full px-3 py-2 text-xs rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none">
                     </div>
                     <div>
                         <label class="block text-[11px] text-gray-400 mb-1">FontAwesome আইকন ক্লাস</label>
@@ -46,7 +46,7 @@
                 </div>
                 <div>
                     <label class="block text-[11px] text-yellow-500 font-bold mb-1"><i class="fa-solid fa-terminal mr-1"></i> টুলের সম্পূর্ণ সোর্স কোড (HTML/CSS/JS একসাথে)</label>
-                    <textarea id="tool-source" rows="12" placeholder="এখানে আপনার টুলের সম্পূর্ণ HTML কোড বা স্ক্রিপ্ট পেস্ট করুন..." class="w-full px-3 py-2 text-xs rounded-lg bg-gray-800 border border-gray-700 text-green-400 font-mono focus:outline-none focus:ring-1 focus:ring-yellow-500"></textarea>
+                    <textarea id="tool-source" rows="12" placeholder="এখানে আপনার টুলের সম্পূর্ণ HTML/CSS/JavaScript কোড পেস্ট করুন..." class="w-full px-3 py-2 text-xs rounded-lg bg-gray-800 border border-gray-700 text-green-400 font-mono focus:outline-none focus:ring-1 focus:ring-yellow-500"></textarea>
                 </div>
                 <button onclick="addNewTool()" class="w-full bg-yellow-500 text-gray-950 font-bold text-xs py-2.5 rounded-lg hover:bg-yellow-600 transition">সরাসরি সাইটে পাবলিশ করুন</button>
             </div>
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="bg-gray-850 p-4 rounded-xl border border-gray-700">
-                    <h3 class="text-sm font-bold text-white mb-2"><i class="fa-solid5 fa-list text-yellow-500 mr-1"></i> লাইভ টুলস তালিকা</h3>
+                    <h3 class="text-sm font-bold text-white mb-2"><i class="fa-solid fa-list text-yellow-500 mr-1"></i> লাইভ টুলস তালিকা</h3>
                     <div id="admin-tools-list" class="space-y-2 max-h-60 overflow-y-auto pr-1 text-xs"></div>
                 </div>
             </div>
@@ -67,10 +67,11 @@
     </div>
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getDatabase, ref, set, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        var _0x3b89=["\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x67\x73\x74\x61\x74\x69\x63\x2E\x63\x6F\x6D\x2F\x66\x69\x72\x65\x62\x61\x73\x65\x6A\x73\x2F\x31\x30\x2E\x37\x2E\x31\x2F\x66\x69\x72\x65\x62\x61\x73\x65\x2D\x61\x70\x70\x2E\x6A\x73","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x67\x73\x74\x61\x74\x69\x63\x2E\x63\x6F\x6D\x2F\x66\x69\x72\x65\x62\x61\x73\x65\x6A\x73\x2F\x31\x30\x2E\x37\x2E\x31\x2F\x66\x69\x72\x65\x62\x61\x73\x65\x2D\x64\x61\x74\x61\x62\x61\x73\x65\x2E\x6A\x73","\x41\x49\x7A\x61\x53\x79\x43\x47\x72\x56\x46\x64\x6B\x64\x47\x73\x31\x31\x6E\x46\x64\x73\x79\x72\x30\x66\x37\x41\x53\x3Setting","\x6D\x65\x73\x73\x61\x67\x65\x2D\x64\x39\x39\x61\x36","\x31\x32\x piano","\x76\x61\x6C\x75\x65","\x61\x64\x6D\x69\x6E\x2D\x70\x69\x6E","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x7A\x49\x64","\x68\x69\x64\x64\x65\x6E","\x61\x64\x64","\x63\x6C\x61\x73\x73\x4C\x69\x73\x74","\x6C\x6F\x67\x69\x6E\x2D\x62\x6F\x78","\x72\x65\x6D\x6F\x76\x65","\x64\x61\x73\x68\x62\x6F\x61\x72\x64\x2D\x62\x6F\x78","\x74\x6F\x6F\x6C\x73","\x73\x69\x74\x65\x5F\x73\x65\x74\x74\x69\x6E\x67\x73\x2F\x6E\x6F\x74\x69\x63\x65"];
+        import { initializeApp as _0x1 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase as _0x2, ref as _0x3, set as _0x4, push as _0x5, onValue as _0x6, remove as _0x7 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-        const firebaseConfig = {
+        const fC = {
             apiKey: "AIzaSyCGrVFdkdGs11nFdsyr0f7AS6V4vjLzN2o",
             authDomain: "message-d99a6.firebaseapp.com",
             databaseURL: "https://message-d99a6-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -81,34 +82,37 @@
             measurementId: "G-NSXRR9JR1K"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        const MASTER_PIN = "123456";
+        const app = _0x1(fC);
+        const db = _0x2(app);
+        const pK = "123456";
 
         window.checkLogin = function() {
-            if(document.getElementById('admin-pin').value === MASTER_PIN) {
+            const input = document.getElementById('admin-pin').value;
+            if (input === pK) {
                 document.getElementById('login-box').classList.add('hidden');
                 document.getElementById('dashboard-box').classList.remove('hidden');
-                loadAdminData();
-            } else { alert('ভুল পিন!'); }
-        }
+                loadData();
+            } else {
+                alert('ভুল পিন কোড!');
+            }
+        };
 
         window.logout = function() {
             document.getElementById('admin-pin').value = "";
             document.getElementById('login-box').classList.remove('hidden');
             document.getElementById('dashboard-box').classList.add('hidden');
-        }
+        };
 
-        function loadAdminData() {
-            onValue(ref(db, 'site_settings/notice'), (snap) => {
+        function loadData() {
+            _0x6(_0x3(db, 'site_settings/notice'), (snap) => {
                 document.getElementById('site-notice').value = snap.val() || "";
             });
 
-            onValue(ref(db, 'tools'), (snap) => {
+            _0x6(_0x3(db, 'tools'), (snap) => {
                 const listDiv = document.getElementById('admin-tools-list');
                 listDiv.innerHTML = "";
                 const data = snap.val();
-                if(data) {
+                if (data) {
                     Object.keys(data).forEach(key => {
                         listDiv.innerHTML += `
                             <div class="flex justify-between items-center bg-gray-800 p-2 rounded border border-gray-700">
@@ -116,7 +120,9 @@
                                 <button onclick="deleteTool('${key}')" class="text-red-500 hover:text-red-400 p-1"><i class="fa-solid fa-trash"></i></button>
                             </div>`;
                     });
-                } else { listDiv.innerHTML = "<p class='text-gray-500 text-center py-2'>কোনো টুল নেই।</p>"; }
+                } else {
+                    listDiv.innerHTML = "<p class='text-gray-500 text-center py-2'>কোনো টুল নেই।</p>";
+                }
             });
         }
 
@@ -126,25 +132,25 @@
             const icon = document.getElementById('tool-icon').value;
             const source = document.getElementById('tool-source').value;
 
-            if(!name || !desc || !source) { alert('সবগুলো ঘর পূরণ করুন!'); return; }
+            if (!name || !desc || !source) { alert('সবগুলো ঘর পূরণ করুন!'); return; }
 
-            const newToolRef = push(ref(db, 'tools'));
-            set(newToolRef, { name, desc, icon, source })
+            const newRef = _0x5(_0x3(db, 'tools'));
+            _0x4(newRef, { name, desc, icon, source })
                 .then(() => {
                     alert('পুরো সোর্স কোডসহ টুলটি লাইভ হয়েছে!');
                     document.getElementById('tool-name').value = "";
                     document.getElementById('tool-desc').value = "";
                     document.getElementById('tool-source').value = "";
                 });
-        }
+        };
 
         window.deleteTool = function(key) {
-            if(confirm('টুলটি মুছে ফেলতে চান?')) { remove(ref(db, `tools/${key}`)); }
-        }
+            if (confirm('টুলটি মুছে ফেলতে চান?')) { _0x7(_0x3(db, `tools/${key}`)); }
+        };
 
         window.updateNotice = function() {
-            set(ref(db, 'site_settings/notice'), document.getElementById('site-notice').value).then(() => alert('নোটিশ আপডেট হয়েছে!'));
-        }
+            _0x4(_0x3(db, 'site_settings/notice'), document.getElementById('site-notice').value).then(() => alert('নোটিশ আপডেট হয়েছে!'));
+        };
     </script>
 </body>
 </html>
