@@ -1,10 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
-    <title>My Tool Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King-Tools - All in One Premium Tools</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <h1>Welcome to  ত BNTeach Work!</h1>
-    <p>আমাদের টুল সাইটটি তৈরি হচ্ছে...</p>
+<body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col">
+
+    <nav class="bg-gray-800 border-b border-gray-750 px-4 py-3 flex justify-between items-center shadow-lg">
+        <div class="flex items-center space-x-2 mx-auto md:mx-0">
+            <i class="fa-solid fa-crown text-yellow-500 text-2xl"></i>
+            <span class="text-xl font-black tracking-wider text-white">KING-<span class="text-yellow-500">TOOLS</span></span>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto w-full px-4 mt-4">
+        <div class="bg-gray-800 border border-dashed border-gray-600 rounded-lg p-4 text-center text-gray-400 text-xs tracking-wider shadow-inner">
+            <p class="mb-1 text-[10px] uppercase text-gray-500 font-bold">বিজ্ঞাপন</p>
+            <div class="h-16 flex items-center justify-content-center bg-gray-850 rounded">Top Banner Ad Slot (Responsive)</div>
+        </div>
+    </div>
+
+    <header class="max-w-7xl mx-auto w-full px-4 py-8 text-center">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">আপনার প্রয়োজনীয় সব টুলস এক জায়গায়</h1>
+        <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">সম্পূর্ণ ফ্রিতে ব্যবহার করুন প্রিমিয়াম সব ওয়েব টুলস এবং ডাউনলোডার।</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto w-full px-4 flex-grow grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        
+        <div class="bg-gray-800 border border-gray-700 rounded-2xl p-5 shadow-xl hover:border-yellow-500/50 transition flex flex-col justify-between group">
+            <div>
+                <div class="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-red-500 text-2xl mb-4 group-hover:scale-110 transition">
+                    <i class="fa-solid fa-video"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-1">ভিডিও ডাউনলোডার</h3>
+                <p class="text-gray-400 text-xs leading-relaxed">ইউটিউব, ফেসবুক এবং টিকটক থেকে এক ক্লিকে হাই-কোয়ালিটি ভিডিও ডাউনলোড করুন।</p>
+            </div>
+            <a href="downloader.html" class="mt-5 block text-center bg-gray-750 hover:bg-yellow-500 hover:text-gray-950 text-yellow-500 font-semibold py-2 rounded-xl text-sm transition">
+                টুলটি ব্যবহার করুন <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+            </a>
+        </div>
+
+        <div class="bg-gray-800 border border-gray-700 rounded-2xl p-5 shadow-xl opacity-60 flex flex-col justify-between">
+            <div>
+                <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500 text-2xl mb-4">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-1">ফটো এডিটর টুল</h3>
+                <p class="text-gray-400 text-xs leading-relaxed">অনলাইনেই ইমেজ রিসাইজ, ক্রপ এবং ব্যাকগ্রাউন্ড রিমুভ করার চমৎকার ইউটিলিটি।</p>
+            </div>
+            <button disabled class="mt-5 block text-center bg-gray-850 text-gray-500 font-semibold py-2 rounded-xl text-sm cursor-not-allowed">
+                শীঘ্রই আসছে
+            </button>
+        </div>
+
+        <div class="bg-gray-800 border border-gray-700 rounded-2xl p-5 shadow-xl opacity-60 flex flex-col justify-between">
+            <div>
+                <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-500 text-2xl mb-4">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-1">পাসওয়ার্ড জেনারেটর</h3>
+                <p class="text-gray-400 text-xs leading-relaxed">আপনার অ্যাকাউন্ট নিরাপদ রাখতে স্ট্রং এবং হ্যাক-প্রুফ পাসওয়ার্ড তৈরি করুন।</p>
+            </div>
+            <button disabled class="mt-5 block text-center bg-gray-850 text-gray-500 font-semibold py-2 rounded-xl text-sm cursor-not-allowed">
+                শীঘ্রই আসছে
+            </button>
+        </div>
+
+    </main>
+
+    <div class="max-w-7xl mx-auto w-full px-4 mb-6">
+        <div class="bg-gray-800 border border-dashed border-gray-600 rounded-lg p-4 text-center text-gray-400 text-xs tracking-wider shadow-inner">
+            <p class="mb-1 text-[10px] uppercase text-gray-500 font-bold">বিজ্ঞাপন</p>
+            <div class="h-24 flex items-center justify-content-center bg-gray-850 rounded">Bottom Large Banner Ad Slot</div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-950 text-gray-500 text-xs text-center py-4 border-t border-gray-850 mt-auto">
+        <p>&copy; 2026 King-Tools. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
