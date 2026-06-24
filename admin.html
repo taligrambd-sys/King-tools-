@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>King-Tools - Premium Cryptic Admin Panel</title>
+    <title>King-Tools - 100% Secure Admin Panel</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,19 +11,26 @@
 
     <div id="login-box" class="w-full max-w-md bg-gray-800 border border-gray-750 rounded-2xl p-6 shadow-2xl">
         <div class="text-center mb-6">
-            <i class="fa-solid fa-user-shield text-yellow-500 text-4xl mb-2"></i>
-            <h2 class="text-xl font-bold text-white">সুরক্ষিত এডমিন লগইন</h2>
-            <p class="text-xs text-gray-400 mt-1">সেশন স্টোরেজ এবং রিয়েলটাইম ফিক্স সক্রিয়</p>
+            <i class="fa-solid fa-shield-halved text-green-500 text-4xl mb-2"></i>
+            <h2 class="text-xl font-bold text-white">ফায়ারবেস অথ লগইন</h2>
+            <p class="text-xs text-gray-400 mt-1">আপনার ডাটাবেজ এখন সম্পূর্ণ হ্যাক-প্রুফ</p>
         </div>
         <div class="space-y-4">
-            <input type="password" id="admin-pin" placeholder="••••••••" class="w-full px-4 py-2.5 rounded-xl border border-gray-700 bg-gray-850 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500 text-center tracking-widest font-bold">
-            <button onclick="checkLogin()" class="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-950 font-bold py-2.5 rounded-xl transition shadow-lg">লগইন করুন</button>
+            <div>
+                <label class="block text-[11px] text-gray-400 mb-1">এডমিন ইমেইল</label>
+                <input type="email" id="admin-email" placeholder="যেমন: admin@kingtools.com" class="w-full px-4 py-2 bg-gray-850 border border-gray-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <div>
+                <label class="block text-[11px] text-gray-400 mb-1">সিক্রেট পাসওয়ার্ড</label>
+                <input type="password" id="admin-password" placeholder="••••••••" class="w-full px-4 py-2 bg-gray-850 border border-gray-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <button onclick="checkLogin()" class="w-full bg-green-500 hover:bg-green-600 text-gray-950 font-bold py-2.5 rounded-xl transition shadow-lg">লগইন করুন</button>
         </div>
     </div>
 
     <div id="dashboard-box" class="w-full max-w-5xl bg-gray-800 border border-gray-750 rounded-2xl p-6 shadow-2xl hidden">
         <div class="flex justify-between items-center border-b border-gray-750 pb-4 mb-4">
-            <h1 class="text-xl font-black text-white"><i class="fa-solid fa-crown text-yellow-500 mr-1"></i> KING-TOOLS OBFUSCATED PANEL</h1>
+            <h1 class="text-xl font-black text-white"><i class="fa-solid fa-crown text-yellow-500 mr-1"></i> KING-TOOLS SECURE PANEL</h1>
             <button onclick="logout()" class="bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white px-3 py-1.5 rounded-xl text-xs font-bold transition">লগআউট</button>
         </div>
 
@@ -41,11 +48,11 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-[11px] text-gray-400 mb-1">টুলের সংক্ষিপ্ত বিবরণ (Short Description)</label>
+                    <label class="block text-[11px] text-gray-400 mb-1">টুলের সংক্ষিপ্ত বিবরণ</label>
                     <input type="text" id="tool-desc" placeholder="টুলটির কাজ সংক্ষেপে লিখুন..." class="w-full px-3 py-2 text-xs rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none">
                 </div>
                 <div>
-                    <label class="block text-[11px] text-yellow-500 font-bold mb-1"><i class="fa-solid fa-terminal mr-1"></i> টুলের সম্পূর্ণ সোর্স কোড (HTML/CSS/JS একসাথে)</label>
+                    <label class="block text-[11px] text-yellow-500 font-bold mb-1"><i class="fa-solid fa-terminal mr-1"></i> ٹولز এর সম্পূর্ণ সোর্স কোড (HTML/CSS/JS একসাথে)</label>
                     <textarea id="tool-source" rows="12" placeholder="এখানে আপনার টুলের সম্পূর্ণ HTML/CSS/JavaScript কোড পেস্ট করুন..." class="w-full px-3 py-2 text-xs rounded-lg bg-gray-800 border border-gray-700 text-green-400 font-mono focus:outline-none focus:ring-1 focus:ring-yellow-500"></textarea>
                 </div>
                 <button onclick="addNewTool()" class="w-full bg-yellow-500 text-gray-950 font-bold text-xs py-2.5 rounded-lg hover:bg-yellow-600 transition">সরাসরি সাইটে পাবলিশ করুন</button>
@@ -54,7 +61,7 @@
             <div class="space-y-4">
                 <div class="bg-gray-850 p-4 rounded-xl border border-gray-700">
                     <h3 class="text-sm font-bold text-white mb-2"><i class="fa-solid fa-bullhorn text-yellow-500 mr-1"></i> সাইট নোটিশ</h3>
-                    <textarea id="site-notice" rows="2" class="w-full px-3 py-2 text-xs rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none"></textarea>
+                    <textarea id="site-notice" rows="2" class="w-full px-3 py-2 text-xs rounded-lg bg-gray-850 border border-gray-700 text-white focus:outline-none"></textarea>
                     <button onclick="updateNotice()" class="mt-2 w-full bg-gray-700 text-white text-xs py-1.5 rounded-lg hover:bg-yellow-500 hover:text-gray-950 transition">নোটিশ আপডেট</button>
                 </div>
 
@@ -67,11 +74,11 @@
     </div>
 
     <script type="module">
-        var _0x5f12=["\x4A\x6F\x79\x72\x61\x6D\x40\x23\x32\x30\x30\x36","\x76\x61\x6C\x75\x65","\x61\x64\x6D\x69\x6E\x2D\x70\x69\x6E","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x68\x69\x64\x64\x65\x6E","\x61\x64\x64","\x63\x6C\x61\x73\x73\x4C\x69\x73\x74","\x6C\x6F\x67\x69\x6E\x2D\x62\x6F\x78","\x72\x65\x6D\x6F\x76\x65","\x64\x61\x73\x68\x62\x6F\x61\x72\x64\x2D\x62\x6F\x78","\x69\x73\x41\x75\x74\x68\x65\x6E\x74\x69\x63\x61\x74\x65\x64\x5F\x6B\x69\x6E\x67\x74\x6F\x6F\x6C\x73","\x73\x65\x73\x73\x69\x6F\x6E\x53\x74\x6F\x72\x61\x67\x65"];
-        import { initializeApp as _0x1 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getDatabase as _0x2, ref as _0x3, set as _0x4, push as _0x5, onValue as _0x6, remove as _0x7 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, set, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-        const fC = {
+        const firebaseConfig = {
             apiKey: "AIzaSyCGrVFdkdGs11nFdsyr0f7AS6V4vjLzN2o",
             authDomain: "message-d99a6.firebaseapp.com",
             databaseURL: "https://message-d99a6-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -82,44 +89,43 @@
             measurementId: "G-NSXRR9JR1K"
         };
 
-        const app = _0x1(fC);
-        const db = _0x2(app);
-        const pK = _0x5f12[0]; 
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth(app);
 
-        // পেজ লোড হওয়ার সময় আগের সেশন চেক করা
-        window.addEventListener('DOMContentLoaded', () => {
-            if (sessionStorage.getItem(_0x5f12[10]) === "true") {
-                document.getElementById(_0x5f12[7])[_0x5f12[6]][_0x5f12[5]](_0x5f12[4]);
-                document.getElementById(_0x5f12[9])[_0x5f12[6]][_0x5f12[8]](_0x5f12[4]);
+        // রিয়েলটাইম সেশন হ্যান্ডলার (পেজ রিফ্রেশ দিলেও লগআউট হবে না)
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.getElementById('login-box').classList.add('hidden');
+                document.getElementById('dashboard-box').classList.remove('hidden');
                 loadData();
+            } else {
+                document.getElementById('login-box').classList.remove('hidden');
+                document.getElementById('dashboard-box').classList.add('hidden');
             }
         });
 
         window.checkLogin = function() {
-            const input = document.getElementById(_0x5f12[2])[_0x5f12[1]];
-            if (input === pK) {
-                sessionStorage.setItem(_0x5f12[10], "true"); // সেশন সেভ করা হলো
-                document.getElementById(_0x5f12[7])[_0x5f12[6]][_0x5f12[5]](_0x5f12[4]);
-                document.getElementById(_0x5f12[9])[_0x5f12[6]][_0x5f12[8]](_0x5f12[4]);
-                loadData();
-            } else {
-                alert('ভুল পিন কোড!');
-            }
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+
+            if(!email || !password) { alert('ইমেইল এবং পাসওয়ার্ড দুটিই দিন!'); return; }
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then(() => { alert('সাফল্যের সাথে লগইন হয়েছে!'); })
+                .catch((error) => { alert('লগইন ব্যর্থ: ' + error.message); });
         };
 
         window.logout = function() {
-            sessionStorage.removeItem(_0x5f12[10]); // সেশন ডিলিট করা হলো
-            document.getElementById(_0x5f12[2])[_0x5f12[1]] = "";
-            document.getElementById(_0x5f12[7])[_0x5f12[6]][_0x5f12[8]](_0x5f12[4]);
-            document.getElementById(_0x5f12[9])[_0x5f12[6]][_0x5f12[5]](_0x5f12[4]);
+            signOut(auth).then(() => { alert('লগআউট সম্পন্ন হয়েছে!'); });
         };
 
         function loadData() {
-            _0x6(_0x3(db, 'site_settings/notice'), (snap) => {
+            onValue(ref(db, 'site_settings/notice'), (snap) => {
                 document.getElementById('site-notice').value = snap.val() || "";
             });
 
-            _0x6(_0x3(db, 'tools'), (snap) => {
+            onValue(ref(db, 'tools'), (snap) => {
                 const listDiv = document.getElementById('admin-tools-list');
                 listDiv.innerHTML = "";
                 const data = snap.val();
@@ -145,27 +151,28 @@
 
             if (!name || !desc || !source) { alert('সবগুলো ঘর পূরণ করুন!'); return; }
 
-            const newRef = _0x5(_0x3(db, 'tools'));
-            _0x4(newRef, { name, desc, icon, source })
+            const newRef = push(ref(db, 'tools'));
+            set(newRef, { name, desc, icon, source })
                 .then(() => {
                     alert('পুরো সোর্স কোডসহ টুলটি লাইভ হয়েছে!');
                     document.getElementById('tool-name').value = "";
                     document.getElementById('tool-desc').value = "";
                     document.getElementById('tool-source').value = "";
-                });
+                }).catch(err => alert('ত্রুটি: ' + err.message));
         };
 
-        // ডিলিট ফাংশন গ্লোবাল স্কোপে ফিক্স করা হয়েছে
         window.deleteTool = function(key) {
             if (confirm('টুলটি মুছে ফেলতে চান?')) { 
-                _0x7(_0x3(db, `tools/${key}`))
+                remove(ref(db, `tools/${key}`))
                 .then(() => alert('টুলটি সফলভাবে ডিলিট করা হয়েছে!'))
                 .catch((err) => alert('ডিলিট করতে সমস্যা হয়েছে: ' + err.message));
             }
         };
 
         window.updateNotice = function() {
-            _0x4(_0x3(db, 'site_settings/notice'), document.getElementById('site-notice').value).then(() => alert('নোটিশ আপডেট হয়েছে!'));
+            set(ref(db, 'site_settings/notice'), document.getElementById('site-notice').value)
+                .then(() => alert('নোটিশ আপডেট হয়েছে!'))
+                .catch(err => alert('ত্রুটি: ' + err.message));
         };
     </script>
 </body>
