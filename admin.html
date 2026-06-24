@@ -9,6 +9,7 @@
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans min-h-screen flex flex-col justify-center items-center p-4">
 
+    <!-- Login Card -->
     <div id="login-box" class="w-full max-w-md bg-gray-800 border border-gray-750 rounded-2xl p-6 shadow-2xl">
         <div class="text-center mb-6">
             <i class="fa-solid fa-user-shield text-yellow-500 text-4xl mb-2"></i>
@@ -21,6 +22,7 @@
         </div>
     </div>
 
+    <!-- Admin Dashboard -->
     <div id="dashboard-box" class="w-full max-w-5xl bg-gray-800 border border-gray-750 rounded-2xl p-6 shadow-2xl hidden">
         <div class="flex justify-between items-center border-b border-gray-750 pb-4 mb-4">
             <h1 class="text-xl font-black text-white"><i class="fa-solid fa-crown text-yellow-500 mr-1"></i> KING-TOOLS OBFUSCATED PANEL</h1>
@@ -28,6 +30,7 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left: Add Tool with Source Code -->
             <div class="lg:col-span-2 bg-gray-850 p-4 rounded-xl border border-gray-700 space-y-3">
                 <h3 class="text-sm font-bold text-white mb-1"><i class="fa-solid fa-folder-plus text-yellow-500 mr-1"></i> সোর্স কোডসহ টুল যুক্ত করুন</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -51,6 +54,7 @@
                 <button onclick="addNewTool()" class="w-full bg-yellow-500 text-gray-950 font-bold text-xs py-2.5 rounded-lg hover:bg-yellow-600 transition">সরাসরি সাইটে পাবলিশ করুন</button>
             </div>
 
+            <!-- Right: Manage Existing Tools -->
             <div class="space-y-4">
                 <div class="bg-gray-850 p-4 rounded-xl border border-gray-700">
                     <h3 class="text-sm font-bold text-white mb-2"><i class="fa-solid fa-bullhorn text-yellow-500 mr-1"></i> সাইট নোটিশ</h3>
@@ -66,8 +70,9 @@
         </div>
     </div>
 
+    <!-- Firebase Secure Obfuscated System -->
     <script type="module">
-        var _0x3b89=["\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x67\x73\x74\x61\x74\x69\x63\x2E\x63\x6F\x6D\x2F\x66\x69\x72\x65\x62\x61\x73\x65\x6A\x73\x2F\x31\x30\x2E\x37\x2E\x31\x2F\x66\x69\x72\x65\x62\x61\x73\x65\x2D\x61\x70\x70\x2E\x6A\x73","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x67\x73\x74\x61\x74\x69\x63\x2E\x63\x6F\x6D\x2F\x66\x69\x72\x65\x62\x61\x73\x65\x6A\x73\x2F\x31\x30\x2E\x37\x2E\x31\x2F\x66\x69\x72\x65\x62\x61\x73\x65\x2D\x64\x61\x74\x61\x62\x61\x73\x65\x2E\x6A\x73","\x41\x49\x7A\x61\x53\x79\x43\x47\x72\x56\x46\x64\x6B\x64\x47\x73\x31\x31\x6E\x46\x64\x73\x79\x72\x30\x66\x37\x41\x53\x3Setting","\x6D\x65\x73\x73\x61\x67\x65\x2D\x64\x39\x39\x61\x36","\x31\x32\x piano","\x76\x61\x6C\x75\x65","\x61\x64\x6D\x69\x6E\x2D\x70\x69\x6E","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x7A\x49\x64","\x68\x69\x64\x64\x65\x6E","\x61\x64\x64","\x63\x6C\x61\x73\x73\x4C\x69\x73\x74","\x6C\x6F\x67\x69\x6E\x2D\x62\x6F\x78","\x72\x65\x6D\x6F\x76\x65","\x64\x61\x73\x68\x62\x6F\x61\x72\x64\x2D\x62\x6F\x78","\x74\x6F\x6F\x6C\x73","\x73\x69\x74\x65\x5F\x73\x65\x74\x74\x69\x6E\x67\x73\x2F\x6E\x6F\x74\x69\x63\x65"];
+        var _0x5f12=["\x4A\x6F\x79\x72\x61\x6D\x40\x23\x32\x30\x30\x36","\x76\x61\x6C\x75\x65","\x61\x64\x6D\x69\x6E\x2D\x70\x69\x6E","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x68\x69\x64\x64\x65\x6E","\x61\x64\x64","\x63\x6C\x61\x73\x73\x4C\x69\x73\x74","\x6C\x6F\x67\x69\x6E\x2D\x62\x6F\x78","\x72\x65\x6D\x6F\x76\x65","\x64\x61\x73\x68\x62\x6F\x61\x72\x64\x2D\x62\x6F\x78"];
         import { initializeApp as _0x1 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getDatabase as _0x2, ref as _0x3, set as _0x4, push as _0x5, onValue as _0x6, remove as _0x7 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
@@ -84,13 +89,15 @@
 
         const app = _0x1(fC);
         const db = _0x2(app);
-        const pK = "123456";
+        
+        // নতুন পাসওয়ার্ডটি হেক্সাডেসিমেল ডিক্রিপশন মোডে এনকোড করা হয়েছে
+        const pK = _0x5f12[0]; 
 
         window.checkLogin = function() {
-            const input = document.getElementById('admin-pin').value;
+            const input = document.getElementById(_0x5f12[2])[_0x5f12[1]];
             if (input === pK) {
-                document.getElementById('login-box').classList.add('hidden');
-                document.getElementById('dashboard-box').classList.remove('hidden');
+                document.getElementById(_0x5f12[7])[_0x5f12[6]][_0x5f12[5]](_0x5f12[4]);
+                document.getElementById(_0x5f12[9])[_0x5f12[6]][_0x5f12[8]](_0x5f12[4]);
                 loadData();
             } else {
                 alert('ভুল পিন কোড!');
@@ -98,9 +105,9 @@
         };
 
         window.logout = function() {
-            document.getElementById('admin-pin').value = "";
-            document.getElementById('login-box').classList.remove('hidden');
-            document.getElementById('dashboard-box').classList.add('hidden');
+            document.getElementById(_0x5f12[2])[_0x5f12[1]] = "";
+            document.getElementById(_0x5f12[7])[_0x5f12[6]][_0x5f12[8]](_0x5f12[4]);
+            document.getElementById(_0x5f12[9])[_0x5f12[6]][_0x5f12[5]](_0x5f12[4]);
         };
 
         function loadData() {
