@@ -51,9 +51,15 @@
                     <label class="block text-[11px] text-gray-400 mb-1">টুলের সংক্ষিপ্ত বিবরণ</label>
                     <input type="text" id="tool-desc" placeholder="টুলটির কাজ সংক্ষেপে লিখুন..." class="w-full px-3 py-2 text-xs rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none">
                 </div>
+
+                <div class="bg-gray-800 p-3 rounded-lg border border-dashed border-gray-600">
+                    <label class="block text-[11px] text-green-400 font-bold mb-1"><i class="fa-solid fa-file-code mr-1"></i> বিকল্প পদ্ধতি: .html ফাইল আপলোড করুন</label>
+                    <input type="file" id="tool-file" accept=".html,.txt" onchange="handleFileUpload(this)" class="w-full text-xs text-gray-400 file:mr-4 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-gray-700 file:text-white hover:file:bg-green-600 file:transition cursor-pointer">
+                </div>
+
                 <div>
-                    <label class="block text-[11px] text-yellow-500 font-bold mb-1"><i class="fa-solid fa-terminal mr-1"></i> ٹولز এর সম্পূর্ণ সোর্স কোড (HTML/CSS/JS একসাথে)</label>
-                    <textarea id="tool-source" rows="12" placeholder="এখানে আপনার টুলের সম্পূর্ণ HTML/CSS/JavaScript কোড পেস্ট করুন..." class="w-full px-3 py-2 text-xs rounded-lg bg-gray-800 border border-gray-700 text-green-400 font-mono focus:outline-none focus:ring-1 focus:ring-yellow-500"></textarea>
+                    <label class="block text-[11px] text-yellow-500 font-bold mb-1"><i class="fa-solid fa-terminal mr-1"></i> টুলের সম্পূর্ণ সোর্স কোড (HTML/CSS/JS একসাথে)</label>
+                    <textarea id="tool-source" rows="12" placeholder="এখানে কোড পেস্ট করুন অথবা ওপর থেকে ফাইল আপলোড করুন..." class="w-full px-3 py-2 text-xs rounded-lg bg-gray-800 border border-gray-700 text-green-400 font-mono focus:outline-none focus:ring-1 focus:ring-yellow-500"></textarea>
                 </div>
                 <button onclick="addNewTool()" class="w-full bg-yellow-500 text-gray-950 font-bold text-xs py-2.5 rounded-lg hover:bg-yellow-600 transition">সরাসরি সাইটে পাবলিশ করুন</button>
             </div>
@@ -61,7 +67,7 @@
             <div class="space-y-4">
                 <div class="bg-gray-850 p-4 rounded-xl border border-gray-700">
                     <h3 class="text-sm font-bold text-white mb-2"><i class="fa-solid fa-bullhorn text-yellow-500 mr-1"></i> সাইট নোটিশ</h3>
-                    <textarea id="site-notice" rows="2" class="w-full px-3 py-2 text-xs rounded-lg bg-gray-850 border border-gray-700 text-white focus:outline-none"></textarea>
+                    <textarea id="site-notice" rows="2" class="w-full px-3 py-2 text-xs rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none"></textarea>
                     <button onclick="updateNotice()" class="mt-2 w-full bg-gray-700 text-white text-xs py-1.5 rounded-lg hover:bg-yellow-500 hover:text-gray-950 transition">নোটিশ আপডেট</button>
                 </div>
 
@@ -93,7 +99,6 @@
         const db = getDatabase(app);
         const auth = getAuth(app);
 
-        // রিয়েলটাইম সেশন হ্যান্ডলার (পেজ রিফ্রেশ দিলেও লগআউট হবে না)
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 document.getElementById('login-box').classList.add('hidden');
@@ -104,6 +109,19 @@
                 document.getElementById('dashboard-box').classList.add('hidden');
             }
         });
+
+        // NEW: HTML File Uploader Logic
+        window.handleFileUpload = function(input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // ফাইলের ভেতরের সম্পূর্ণ কোড টেক্সটএরিয়া বক্সে পুশ করা হচ্ছে
+                document.getElementById('tool-source').value = e.target.result;
+            };
+            reader.readAsText(file);
+        };
 
         window.checkLogin = function() {
             const email = document.getElementById('admin-email').value;
@@ -158,6 +176,7 @@
                     document.getElementById('tool-name').value = "";
                     document.getElementById('tool-desc').value = "";
                     document.getElementById('tool-source').value = "";
+                    document.getElementById('tool-file').value = ""; // ফাইল ইনপুট রিসেট
                 }).catch(err => alert('ত্রুটি: ' + err.message));
         };
 
